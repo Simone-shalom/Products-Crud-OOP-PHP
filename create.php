@@ -1,4 +1,6 @@
 <?php 
+// we are getitng the data from _GET _POST methods
+var_dump($_POST)
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,24 +12,26 @@
     <title>Document</title>
 </head>
 <body>
-<form>
+  <!-- get search for,applies query filters, it is in the url -->
+  <!-- for every other like db actions, user data use post-->
+<form action='' method="post">
   <h1>Create a new Product</h1>
   <div class="mb-3">
     <label for="prd" class="form-label">Product Title</label>
-    <input type="text" class="form-control" id="prd" aria-describedby="emailHelp">
+    <input type="text" class="form-control" id="prd" name="title" >
     <div id="prd" class="form-text">Add name to a new product</div>
   </div>
   <div class="mb-3">
     <label for="desc" class="form-label">Description</label>
-    <input type="text" class="form-control" id="desc">
+    <input type="text" class="form-control" id="desc" name="desc">
   </div>
   <div class="mb-3">
     <label for="img" class="form-label">Image</label>
-    <input type='file' class="form-control" id="img">
+    <input type='file' class="form-control" id="img" name="img">
   </div>
    <div class="mb-3">
     <label for="price" class="form-label">Price</label>
-    <input type="number" step="0.1" class="form-control" id="price">
+    <input type="number" step="0.1" class="form-control" id="price" name="price">
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
