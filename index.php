@@ -8,9 +8,7 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $statement = $pdo-> prepare('SELECT * from products ORDER BY create_date DESC');
 $statement ->execute();
 $products = $statement-> fetchAll(PDO::FETCH_ASSOC);
-
-print_r($products);
-
+ 
 ?>
 
 <!doctype html>
@@ -18,12 +16,16 @@ print_r($products);
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Important link to bootstrap to be able to add boottrasp elements  -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel='stylesheet' href='app.css'>
     <title>Products Crud</title>
   </head>
   <body>
     <h1>Products Crud!</h1>
+    <div>
+        <a href="create.php" type="button" class="btn btn-primary">Create a Product</a>
+    </div>
 
     <table class="table">
   <thead>
