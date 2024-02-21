@@ -29,29 +29,32 @@ print_r($products);
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">Image</th>
+      <th scope="col">Title</th>
+      <th scope="col">Price</th>
+      <th scope="col">Created Date</th>
+      <th scope="col">Action</th>
+
+
     </tr>
   </thead>
   <tbody class="table-group-divider">
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+   <?php  foreach($products as $indx => $product) {?>
+     <tr>
+      <th scope="row"><?php echo $indx +1 ?></th>
+        <td><?php echo $product['title'] ?></td>
+        <td><?php echo $product['price'] ?></td>
+        <td><?php echo $product['create_date'] ?></td>
+        <td>
+        <button type="button" class="btn btn-info">Edit</button>
+        <button type="button" class="btn btn-danger">Delete</button>
+        </td>
+
+
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
+    <?php } ?>
+ 
+   
   </tbody>
 </table>
   </body>
