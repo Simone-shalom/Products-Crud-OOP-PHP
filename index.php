@@ -1,10 +1,11 @@
 <?php
 
-
+//setup connection to db with pdo
 $pdo = new PDO("mysql:host=localhost;port=3306;dbname=products-crud","root","");
 
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+//select the data
 $statement = $pdo-> prepare('SELECT * from products ORDER BY create_date DESC');
 $statement ->execute();
 $products = $statement-> fetchAll(PDO::FETCH_ASSOC);
@@ -41,6 +42,7 @@ $products = $statement-> fetchAll(PDO::FETCH_ASSOC);
     </tr>
   </thead>
   <tbody class="table-group-divider">
+    <!-- correct way to map data in php- remmeber -->
    <?php  foreach($products as $indx => $product) {?>
      <tr>
       <th scope="row"><?php echo $indx +1 ?></th>
