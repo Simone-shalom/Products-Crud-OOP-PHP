@@ -6,6 +6,7 @@ $pdo = new PDO("mysql:host=localhost;port=3306;dbname=products-crud","root","");
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $errors =[];
+$title = $description = $img =$price =$date ='' ;
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
@@ -27,8 +28,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $errors[] = 'Product desc is required';
   }
 
-  
-  //add data to db
+  // add data to db only if there is no errors
+  if(empty($errors)){
+
+      //add data to db
   $statement = $pdo->prepare("INSERT INTO products (title, description, img, price, create_date) 
     VALUES(:title, :description, :img, :price, :date)");
 
@@ -39,6 +42,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
   $statement->bindValue(':date', $date);
   $statement-> execute();
 
+  }
 }
 
 
@@ -67,20 +71,20 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
   
   <div class="mb-3">
     <label for="prd" class="form-label">Product Title</label>
-    <input type="text" class="form-control" id="prd" name="title" >
+    <input type="text" class="form-control" id="prd" name="title" value="<?php echo $title ?>">
     <div id="prd" class="form-text">Add name to a new product</div>
   </div>
   <div class="mb-3">
     <label for="desc" class="form-label">Description</label>
-    <input type="text" class="form-control" id="desc" name="desc">
+    <input type="text" class="form-control" id="desc" name="desc" value="<?php echo $description ?>">
   </div>
   <div class="mb-3">
     <label for="img" class="form-label">Image</label>
-    <input type='file' class="form-control" id="img" name="img">
+    <input type='file' class="form-control" id="img" name="img" >
   </div>
    <div class="mb-3">
     <label for="price" class="form-label">Price</label>
-    <input type="number" step="0.1" class="form-control" id="price" name="price">
+    <input type="number" step="0.1" class="form-control" id="price" name="price" value="<?php echo $price ?>">
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
