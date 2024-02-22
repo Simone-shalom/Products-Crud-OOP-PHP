@@ -5,11 +5,28 @@
 $pdo = new PDO("mysql:host=localhost;port=3306;dbname=products-crud","root","");
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 $title = $_POST['title'];
-$desc = $_POST['desc'];
-$img = $_POST['img'];
+$description = $_POST['desc'];
+// $img = $_POST['img'];
 $price = $_POST['price'];
+// date formated for mysql
+$date = date('Y-m-d H:i:s');
+
+//add data to db
+$statement = $pdo->prepare("INSERT INTO products (title, description, img, price, create_date) 
+  VALUES(:title, :description, :img, :price, :date)");
+
+$statement->bindValue(':title', $title);
+$statement->bindValue(':description', $description);
+$statement->bindValue(':img', $img);
+$statement->bindValue(':price', $price);
+$statement->bindValue(':date', $date);
+$statement-> execute();
+
+}
+
 
 
 
