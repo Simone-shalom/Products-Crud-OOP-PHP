@@ -6,6 +6,11 @@ $pdo = new PDO("mysql:host=localhost;port=3306;dbname=products-crud","root","");
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
+$title = $_POST['title'];
+$desc = $_POST['desc'];
+$img = $_POST['img'];
+$price = $_POST['price'];
+
 
 
 var_dump($_POST)
