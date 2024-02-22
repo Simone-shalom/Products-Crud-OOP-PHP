@@ -1,5 +1,13 @@
 <?php 
 // we are getitng the data from _GET _POST methods
+
+//setup connection to db with pdo
+$pdo = new PDO("mysql:host=localhost;port=3306;dbname=products-crud","root","");
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
+
+
 var_dump($_POST)
 ?>
 <!DOCTYPE html>
