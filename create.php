@@ -5,32 +5,43 @@
 $pdo = new PDO("mysql:host=localhost;port=3306;dbname=products-crud","root","");
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+$errors =[];
+
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
-$title = $_POST['title'];
-$description = $_POST['desc'];
-// $img = $_POST['img'];
-$price = $_POST['price'];
-// date formated for mysql
-$date = date('Y-m-d H:i:s');
+  $title = $_POST['title'];
+  $description = $_POST['desc'];
+  // $img = $_POST['img'];
+  $price = $_POST['price'];
+  // date formated for mysql
+  $date = date('Y-m-d H:i:s');
 
-//add data to db
-$statement = $pdo->prepare("INSERT INTO products (title, description, img, price, create_date) 
-  VALUES(:title, :description, :img, :price, :date)");
+  // form validation
+  if(!$title){
+    $errors[] = 'Product ttile is required';
+  }
+   if(!$price){
+    $errors[] = 'Product price is required';
+  }
+   if(!$description){
+    $errors[] = 'Product desc is required';
+  }
 
-$statement->bindValue(':title', $title);
-$statement->bindValue(':description', $description);
-$statement->bindValue(':img', $img);
-$statement->bindValue(':price', $price);
-$statement->bindValue(':date', $date);
-$statement-> execute();
+  
+  //add data to db
+  $statement = $pdo->prepare("INSERT INTO products (title, description, img, price, create_date) 
+    VALUES(:title, :description, :img, :price, :date)");
+
+  $statement->bindValue(':title', $title);
+  $statement->bindValue(':description', $description);
+  $statement->bindValue(':img', $img);
+  $statement->bindValue(':price', $price);
+  $statement->bindValue(':date', $date);
+  $statement-> execute();
 
 }
 
 
-
-
-var_dump($_POST)
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,6 +57,14 @@ var_dump($_POST)
   <!-- for every other like db actions, user data use post-->
 <form action='' method="post">
   <h1>Create a new Product</h1>
+<?php if(!empty($errors)):  ?>
+  <div class="alert alert-danger">
+   <?php  foreach($errors as $error) {?>
+    <div><?php echo $error?></div>
+   <?php  } ?>
+  </div>
+<?php endif; ?>
+  
   <div class="mb-3">
     <label for="prd" class="form-label">Product Title</label>
     <input type="text" class="form-control" id="prd" name="title" >
