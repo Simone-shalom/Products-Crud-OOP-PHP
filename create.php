@@ -8,6 +8,13 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $errors =[];
 $title = $description = $img =$price =$date ='' ;
 
+if(isset($_FILES)){
+  print_r($_FILES);
+}
+
+// exit;
+
+
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
   $title = $_POST['title'];
@@ -30,6 +37,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
   // add data to db only if there is no errors
   if(empty($errors)){
+
+    $image = $_FILES['img'] ?? null;
+    if($image){
+      move_uploaded_file($image['tmp_name'], 'test.jpg');
+    }
 
       //add data to db
   $statement = $pdo->prepare("INSERT INTO products (title, description, img, price, create_date) 
@@ -59,7 +71,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 <body>
   <!-- get method, applies query filters, it is in the url -->
   <!-- for every other like db actions, user data use post-->
-<form action='' method="post">
+  <!-- to use file uploading we have to have entype set -->
+<form action='' method="post" enctype="multipart/form-data">
   <h1>Create a new Product</h1>
 <?php if(!empty($errors)):  ?>
   <div class="alert alert-danger">
