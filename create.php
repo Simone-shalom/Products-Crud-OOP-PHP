@@ -54,7 +54,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
   $statement->bindValue(':price', $price);
   $statement->bindValue(':date', $date);
   $statement-> execute();
-  }
+  header('Location:index.php');
+}
 }
 function randomString($n)
 {
