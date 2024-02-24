@@ -30,7 +30,7 @@ $products = $statement-> fetchAll(PDO::FETCH_ASSOC);
     <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
+      <th scope="col">id</th>
       <th scope="col">Image</th>
       <th scope="col">Title</th>
       <th scope="col">Price</th>
@@ -53,14 +53,10 @@ $products = $statement-> fetchAll(PDO::FETCH_ASSOC);
         <td><?php echo $product['create_date'] ?></td>
         <td>
         <button type="button" class="btn btn-info">Edit</button>
-        <button type="button" class="btn btn-danger">Delete</button>
+        <button href='delete.php?id=<?php echo $product['id']?>' type="button" class="btn btn-danger">Delete</button>
         </td>
-
-
     </tr>
     <?php } ?>
- 
-   
   </tbody>
 </table>
   </body>
