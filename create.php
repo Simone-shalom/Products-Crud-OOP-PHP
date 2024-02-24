@@ -38,7 +38,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 // handling image uploads to images folder with random name to avoid same names
     $img = $_FILES['img'] ?? null;
     $imagePath = '';
-    if($img){
+    if($img && $img['tmp_name']){
       $imagePath = '/images'.randomString(8). '/'.$img['name'];
       mkdir(dirname($imagePath));
       move_uploaded_file($img['tmp_name'], $imagePath);
