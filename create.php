@@ -8,11 +8,6 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $errors =[];
 $title = $description = $img =$price =$date ='' ;
 
-if(isset($_FILES)){
-  print_r($_FILES);
-}
-
-// exit;
 
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -34,13 +29,19 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
    if(!$description){
     $errors[] = 'Product desc is required';
   }
-
+  
+  if(!is_dir('/images')){
+    mkdir('images');
+  }
   // add data to db only if there is no errors
   if(empty($errors)){
-
-    $image = $_FILES['img'] ?? null;
-    if($image){
-      move_uploaded_file($image['tmp_name'], 'test.jpg');
+// handling image uploads to images folder with random name to avoid same names
+    $img = $_FILES['img'] ?? null;
+    $imagePath = '';
+    if($img){
+      $imagePath = '/images'.randomString(8). '/'.$img['name'];
+      mkdir(dirname($imagePath));
+      move_uploaded_file($img['tmp_name'], $imagePath);
     }
 
       //add data to db
@@ -49,16 +50,25 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
   $statement->bindValue(':title', $title);
   $statement->bindValue(':description', $description);
-  $statement->bindValue(':img', $img);
+  $statement->bindValue(':img', $imagePath);
   $statement->bindValue(':price', $price);
   $statement->bindValue(':date', $date);
   $statement-> execute();
-
   }
 }
+function randomString($n)
+{
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $str = '';
+    for ($i = 0; $i < $n; $i++) {
+        $index = rand(0, strlen($characters) - 1);
+        $str .= $characters[$index];
+    }
 
-
+    return $str;
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
