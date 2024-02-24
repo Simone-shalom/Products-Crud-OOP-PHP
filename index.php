@@ -9,7 +9,6 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $statement = $pdo-> prepare('SELECT * from products ORDER BY create_date DESC');
 $statement ->execute();
 $products = $statement-> fetchAll(PDO::FETCH_ASSOC);
- 
 ?>
 
 <!doctype html>
@@ -46,6 +45,9 @@ $products = $statement-> fetchAll(PDO::FETCH_ASSOC);
    <?php  foreach($products as $indx => $product) {?>
      <tr>
       <th scope="row"><?php echo $indx +1 ?></th>
+      <td>
+        <img src="<?php echo $product['img'] ?>" alt="<?php echo $product['title'] ?>" class="product-image">    
+      </td>
         <td><?php echo $product['title'] ?></td>
         <td><?php echo $product['price'] ?></td>
         <td><?php echo $product['create_date'] ?></td>

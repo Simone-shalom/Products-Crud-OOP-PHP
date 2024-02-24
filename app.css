@@ -4,3 +4,7 @@ body {
 form {
   padding: 25px;
 }
+
+.product-image {
+  width: 50px;
+}
