@@ -5,20 +5,17 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $productId = $_GET['id'];
 
-
-if($productId){
-
+// check if we have an id of product
+if(!$productId){
+  header('Location:index.php');
+    exit;
+}
 //make sql query 
 $statement = $pdo ->prepare('DELETE FROM products WHERE id = :id');
 $statement -> bindValue(':id', $productId);
 $statement -> execute();
 
 header('Location:index.php');
-
-} else {
-    header('Location:index.php');
-    exit;
-}
 
 
 ?>

@@ -1,4 +1,13 @@
-<?php
+<?php 
+
+echo 'update Product';
+
+$productId = $_GET['id'];
+// check if we have an id of product
+if(!$productId){
+  header('Location:index.php');
+    exit;
+}
 
 //setup connection to db with pdo
 $pdo = new PDO("mysql:host=localhost;port=3306;dbname=products-crud","root","");
@@ -6,9 +15,10 @@ $pdo = new PDO("mysql:host=localhost;port=3306;dbname=products-crud","root","");
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 //select the data
-$statement = $pdo-> prepare('SELECT * from products ORDER BY create_date DESC');
+$statement = $pdo-> prepare('SELECT * from products  WHERE id = :id ORDER BY create_date DESC');
+$statement -> bindValue(":id", $productId);
 $statement ->execute();
-$products = $statement-> fetchAll(PDO::FETCH_ASSOC);
+$product = $statement-> fetch(PDO::FETCH_ASSOC);
 ?>
 
 <!doctype html>
@@ -42,21 +52,7 @@ $products = $statement-> fetchAll(PDO::FETCH_ASSOC);
   </thead>
   <tbody class="table-group-divider">
     <!-- correct way to map data in php- remmeber -->
-   <?php  foreach($products as $indx => $product) {?>
-     <tr>
-      <th scope="row"><?php echo $indx +1 ?></th>
-      <td>
-        <img src="<?php echo $product['img'] ?>" alt="<?php echo $product['title'] ?>" class="product-image">    
-      </td>
-        <td><?php echo $product['title'] ?></td>
-        <td><?php echo $product['price'] ?></td>
-        <td><?php echo $product['create_date'] ?></td>
-        <td>
-        <a href="update.php?id=<?php echo $product['id']?>" type="button" class="btn btn-info">Edit</a>
-        <a href='delete.php?id=<?php echo $product['id']?>' type="button" class="btn btn-danger">Delete</a>
-        </td>
-    </tr>
-    <?php } ?>
+   <?php echo $product['title']?>
   </tbody>
 </table>
   </body>
