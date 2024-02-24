@@ -29,22 +29,21 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
    if(!$description){
     $errors[] = 'Product desc is required';
   }
-  
-  if(!is_dir('/images')){
-    mkdir('images');
-  }
-  // add data to db only if there is no errors
-  if(empty($errors)){
+
 // handling image uploads to images folder with random name to avoid same names
     $img = $_FILES['img'] ?? null;
     $imagePath = '';
+
     if($img && $img['tmp_name']){
-      $imagePath = '/images'.randomString(8). '/'.$img['name'];
+        $imagePath = 'images/' . randomString(8) . '/' . $img['name'];
       mkdir(dirname($imagePath));
+      print_r($img);
       move_uploaded_file($img['tmp_name'], $imagePath);
     }
 
-      //add data to db
+     // add data to db only if there is no errors   
+        if(empty($errors)){
+    //add data to db
   $statement = $pdo->prepare("INSERT INTO products (title, description, img, price, create_date) 
     VALUES(:title, :description, :img, :price, :date)");
 
