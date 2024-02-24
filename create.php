@@ -57,7 +57,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     <title>Document</title>
 </head>
 <body>
-  <!-- get search for,applies query filters, it is in the url -->
+  <!-- get method, applies query filters, it is in the url -->
   <!-- for every other like db actions, user data use post-->
 <form action='' method="post">
   <h1>Create a new Product</h1>
