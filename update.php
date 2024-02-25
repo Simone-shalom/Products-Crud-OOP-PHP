@@ -21,7 +21,11 @@ $product = $statement -> fetch(PDO::FETCH_ASSOC);
 print_r($product);
 
 $errors =[];
-$title = $description = $img =$price =$date ='' ;
+$title = $product['title'];
+$description= $product['description'];
+$img =$product['img'];
+$price =$product['price'];
+$date =$product['create_date'] ;
 
 
 
