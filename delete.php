@@ -11,7 +11,7 @@ if(!$productId){
     exit;
 }
 //make sql query 
-$statement = $pdo ->prepare('DELETE FROM products WHERE id = :id');
+$statement = $pdo ->prepare('DELETE FROM productss WHERE id = :id');
 $statement -> bindValue(':id', $productId);
 $statement -> execute();
 

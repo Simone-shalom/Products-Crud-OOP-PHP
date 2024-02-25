@@ -44,7 +44,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
      // add data to db only if there is no errors   
         if(empty($errors)){
     //add data to db
-  $statement = $pdo->prepare("INSERT INTO products (title, description, img, price, create_date) 
+  $statement = $pdo->prepare("INSERT INTO productss (title, description, img, price, create_date) 
     VALUES(:title, :description, :img, :price, :date)");
 
   $statement->bindValue(':title', $title);
