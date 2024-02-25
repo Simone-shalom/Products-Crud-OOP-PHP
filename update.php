@@ -14,6 +14,12 @@ $pdo = new PDO("mysql:host=localhost;port=3306;dbname=products-crud","root","");
 
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+$statement = $pdo -> prepare("SELECT * from productss WHERE id =:id");
+$statement ->bindValue(":id", $productId);
+$statement -> execute();
+$product = $statement -> fetch(PDO::FETCH_ASSOC);
+print_r($product);
+
 $errors =[];
 $title = $description = $img =$price =$date ='' ;
 
