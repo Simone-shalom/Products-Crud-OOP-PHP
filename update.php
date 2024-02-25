@@ -1,7 +1,5 @@
 <?php 
 
-echo 'update Product';
-
 $productId = $_GET['id'];
 // check if we have an id of product
 if(!$productId){
@@ -18,7 +16,6 @@ $statement = $pdo -> prepare("SELECT * from productss WHERE id =:id");
 $statement ->bindValue(":id", $productId);
 $statement -> execute();
 $product = $statement -> fetch(PDO::FETCH_ASSOC);
-print_r($product);
 
 $errors =[];
 $title = $product['title'];
@@ -36,7 +33,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
   // $img = $_POST['img'];
   $price = $_POST['price'];
   // date formated for mysql
-  $date = date('Y-m-d H:i:s');
 
   // form validation
   if(!$title){
@@ -63,14 +59,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
      // add data to db only if there is no errors   
         if(empty($errors)){
     //add data to db
-  $statement = $pdo->prepare("INSERT INTO productss (title, description, img, price, create_date) 
-    VALUES(:title, :description, :img, :price, :date)");
+  $statement = $pdo->prepare("UPDATE productss
+    SET title =:title, description =:description, img =:img, price =:price WHERE id=:id");
 
   $statement->bindValue(':title', $title);
   $statement->bindValue(':description', $description);
   $statement->bindValue(':img', $imagePath);
   $statement->bindValue(':price', $price);
-  $statement->bindValue(':date', $date);
+  $statement->bindValue(':id', $productId);
   $statement-> execute();
   header('Location:index.php');
 }
@@ -128,7 +124,7 @@ function randomString($n)
     <label for="price" class="form-label">Price</label>
     <input type="number" step="0.1" class="form-control" id="price" name="price" value="<?php echo $price ?>">
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">Update</button>
 </form>
 </body>
 </html>
