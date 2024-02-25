@@ -39,7 +39,7 @@ $products = $statement-> fetchAll(PDO::FETCH_ASSOC);
 
 <form class="mb-3 pt-2 input-group">
   <input type="text" class="form-control"  placeholder="Search for a product" aria-label="Example text with button addon" aria-describedby="button-addon1"
-    name="search">
+    name="search" value="<?php echo $search?>">
     <button class="btn btn-outline-secondary" type="button"  id="button-addon1">Search</button>
 </form>
 
