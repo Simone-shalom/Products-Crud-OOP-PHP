@@ -52,7 +52,7 @@ $products = $statement-> fetchAll(PDO::FETCH_ASSOC);
      <tr>
       <th scope="row"><?php echo $indx +1 ?></th>
       <td>
-        <img src="<?php echo $product['img'] ?>" alt="<?php echo $product['title'] ?>" class="product-image">    
+        <img src="/<?php echo $product['img'] ?>" alt="<?php echo $product['title'] ?>" class="product-image">    
       </td>
         <td><?php echo $product['title'] ?></td>
         <td><?php echo $product['price'] ?></td>
