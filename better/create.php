@@ -15,7 +15,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
   // take validateProduct from utils
   require_once "utils/validateProduct.php";
 
-
   // add data to db only if there is no errors   
 if(empty($errors)){
     //add data to db
@@ -26,7 +25,7 @@ if(empty($errors)){
   $statement->bindValue(':description', $description);
   $statement->bindValue(':img', $imagePath);
   $statement->bindValue(':price', $price);
-  $statement->bindValue(':date', $date);
+  $statement->bindValue(':date', date('Y-m-d H:i:s'));
   $statement-> execute();
   header('Location:index.php');
 }
