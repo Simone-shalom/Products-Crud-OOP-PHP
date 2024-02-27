@@ -2,10 +2,8 @@
 
 // 4:02 but add images part 
 // start refactoring
-//setup connection to db with pdo
-$pdo = new PDO("mysql:host=localhost;port=3306;dbname=products-crud","root","");
-
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+// get db connection
+require_once "database.php";
 
 //select the data
 // select filtered data by search query
