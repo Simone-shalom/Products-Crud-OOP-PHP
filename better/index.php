@@ -1,5 +1,7 @@
 <?php
 
+// 4:02 but add images part 
+// start refactoring
 //setup connection to db with pdo
 $pdo = new PDO("mysql:host=localhost;port=3306;dbname=products-crud","root","");
 
@@ -21,17 +23,7 @@ $statement ->execute();
 $products = $statement-> fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Important link to bootstrap to be able to add boottrasp elements  -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel='stylesheet' href='app.css'>
-    <title>Products Crud</title>
-  </head>
-  <body>
+<?php require_once "views/partials/header.php"?>
     <h1>Products Crud!</h1>
     <div>
         <a href="create.php" type="button" class="btn btn-primary">Create a Product</a>
