@@ -1,4 +1,6 @@
-
+ <!-- get method, applies query filters, it is in the url -->
+  <!-- for every other like db actions, user data use post-->
+  <!-- to use file uploading we have to have entype set -->
 <form action='' method="post" enctype="multipart/form-data">
   <h1>Update a Product</h1>
 <?php if(!empty($errors)):  ?>
