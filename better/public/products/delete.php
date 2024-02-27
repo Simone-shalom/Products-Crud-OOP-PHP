@@ -1,6 +1,6 @@
 <?php 
 // get db connection
-require_once "database.php";
+require_once "../../database.php";
 
 
 $productId = $_GET['id'];

@@ -3,7 +3,7 @@
 // 4:02 but add images part 
 // start refactoring
 // get db connection
-require_once "database.php";
+require_once "../../database.php";
 
 //select the data
 // select filtered data by search query
@@ -21,7 +21,7 @@ $statement ->execute();
 $products = $statement-> fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<?php require_once "views/partials/header.php"?>
+<?php require_once "../../views/partials/header.php"?>
     <h1>Products Crud!</h1>
     <div>
         <a href="create.php" type="button" class="btn btn-primary">Create a Product</a>
