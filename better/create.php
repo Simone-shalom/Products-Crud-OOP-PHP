@@ -3,6 +3,8 @@
 
 // get db connection
 require_once "database.php";
+// get util randomString fn
+require_once "utils/randomString.php";
 
 $errors =[];
 $title = $description = $img =$price =$date ='' ;
@@ -55,17 +57,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
   header('Location:index.php');
 }
 }
-function randomString($n)
-{
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $str = '';
-    for ($i = 0; $i < $n; $i++) {
-        $index = rand(0, strlen($characters) - 1);
-        $str .= $characters[$index];
-    }
 
-    return $str;
-}
 ?>
 <?php include_once "views/partials/header.php"?>
   <!-- get method, applies query filters, it is in the url -->

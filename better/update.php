@@ -9,6 +9,8 @@ if(!$productId){
 
 // get db connection
 require_once "database.php";
+// get util randomString fn
+require_once "utils/randomString.php";
 
 $statement = $pdo -> prepare("SELECT * from productss WHERE id =:id");
 $statement ->bindValue(":id", $productId);
@@ -68,17 +70,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
   $statement-> execute();
   header('Location:index.php');
 }
-}
-function randomString($n)
-{
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $str = '';
-    for ($i = 0; $i < $n; $i++) {
-        $index = rand(0, strlen($characters) - 1);
-        $str .= $characters[$index];
-    }
-
-    return $str;
 }
 ?>
 
