@@ -17,13 +17,19 @@
     $errors[] = 'Product desc is required';
   }
 
+  if (!is_dir(__DIR__.'/public/images')) {
+    mkdir(__DIR__.'/public/images');
+}
+
 // handling image uploads to images folder with random name to avoid same names
     $img = $_FILES['img'] ?? null;
     $imagePath = '';
 
+
     if($img && $img['tmp_name']){
         $imagePath = 'images/' . randomString(8) . '/' . $img['name'];
-      mkdir(dirname($imagePath));
-      print_r($img);
-      move_uploaded_file($img['tmp_name'], $imagePath);
+      mkdir(dirname(__DIR__.'/public/'.$imagePath));
+      move_uploaded_file($img['tmp_name'], __DIR__.'/public/'.$imagePath);
     }
+
+    // fck imagess not working
