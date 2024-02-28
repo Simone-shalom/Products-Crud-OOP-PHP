@@ -11,7 +11,9 @@
       "email": "studzinskis46@gmail.com"
     }
   ],
-  "require": {},
+  "require": {
+    "guzzlehttp/guzzle": "^7.8"
+  },
   "autoload-dev": {
     "psr-4": {
       "app\\": "./app"
