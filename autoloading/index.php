@@ -1,7 +1,8 @@
 <?php 
 
-require_once ("Email.php");
-require_once ("Person.php");
 
-$email = new Email();
-$person = new Person();
+
+require_once "vendor/autoload.php";
+
+$email = new app\Email();
+$person = new app\Person();

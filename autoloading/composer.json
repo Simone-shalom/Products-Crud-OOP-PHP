@@ -1,15 +1,20 @@
 {
-    "name": "simon/autoloading",
-    "autoload": {
-        "psr-4": {
-            "Simon\\Autoloading\\": "src/"
-        }
-    },
-    "authors": [
-        {
-            "name": "Simone-shalom",
-            "email": "studzinskis46@gmail.com"
-        }
-    ],
-    "require": {}
+  "name": "simon/autoloading",
+  "autoload": {
+    "psr-4": {
+      "Simon\\Autoloading\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Simone-shalom",
+      "email": "studzinskis46@gmail.com"
+    }
+  ],
+  "require": {},
+  "autoload-dev": {
+    "psr-4": {
+      "app\\": "./app"
+    }
+  }
 }
