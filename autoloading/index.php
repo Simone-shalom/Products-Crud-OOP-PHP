@@ -1,11 +1,12 @@
 <?php 
-
-
-
 require_once "vendor/autoload.php";
 
-// $email = new app\Email();
-// $person = new app\Person();
+use app\Person;
+use app\Email;
+
+$email = new Email();
+$person = new Person();
+echo '<br>';
 
 $client = new \GuzzleHttp\Client();
 $response = $client->request('GET', 'https://api.github.com/repos/guzzle/guzzle');
