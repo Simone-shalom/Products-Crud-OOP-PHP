@@ -15,7 +15,11 @@
         require_once("Car.php");
 
         $car02 = new Car(2, "black", "Ford");
-        echo $car02->displayCar()
+        echo $car02->displayCar();
+        $car02->setColor("white");
+        echo "<br>";
+        echo $car02->displayCar();
+
     ?>
 </body>
 </html>
