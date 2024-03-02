@@ -2,7 +2,7 @@
   "name": "simon/autoloading",
   "autoload": {
     "psr-4": {
-      "Simon\\Autoloading\\": "src/"
+      "Simon\\Autoloading\\": "app/"
     }
   },
   "authors": [
