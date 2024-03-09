@@ -21,5 +21,11 @@
         echo $car02->displayCar();
 
     ?>
+
+    <form action="includes/signup.inc.php" method="post">
+        <input type="text" name="username">
+        <input type="password" name="password">
+        <button>Signup</button>
+    </form>
 </body>
 </html>
