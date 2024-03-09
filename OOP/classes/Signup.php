@@ -19,4 +19,22 @@ class Signup extends Database {
         $statement->execute();
     }
 
+    private function isEmpty (){
+        if(!isset($this->username) && !isset($this->password)){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private function signupUser(){
+        // error handling 
+        if($this->isEmpty()){
+            header("Location:" . $_SERVER['DOCUMENT_ROOT'] . '/index/php') ;
+            die();
+        };
+        // if no errors singup user
+        $this->insertUser();
+    }
+
 }
