@@ -11,5 +11,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     require_once("../classes/Signup.php");
 
     $singup = new Signup($username, $password);
+    $singup->signupUser();
 
 }

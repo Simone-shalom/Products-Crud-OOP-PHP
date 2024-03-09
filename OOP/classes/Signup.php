@@ -27,7 +27,7 @@ class Signup extends Database {
         }
     }
 
-    private function signupUser(){
+    public function signupUser(){
         // error handling 
         if($this->isEmpty()){
             header("Location:" . $_SERVER['DOCUMENT_ROOT'] . '/index/php') ;
