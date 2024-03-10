@@ -1,6 +1,6 @@
 <?php
 
-class SignupController {
+class SignupController extends Signup {
     private string $username;
     private string $password;
     private string $passwordRepeat;
@@ -64,6 +64,16 @@ class SignupController {
         }
         return $result;
 
+    }
+
+    private function isUserTaken(){
+        $result = false;
+        if($this->userExists($this->username, $this->email)){
+            $result = false;
+        } else {
+            $result = true;
+        }
+        return $result;
     }
 
 }
