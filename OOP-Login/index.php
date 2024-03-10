@@ -28,7 +28,7 @@
     </div>
     <div class="form-group">
         <label for="passwordRepeat">Repeat Password</label>
-        <input type="email" class="form-control" id="passwordRepeat" name="passwordRepeat"  >
+        <input type="text" class="form-control" id="passwordRepeat" name="passwordRepeat"  >
         <small id="username" class="form-text text-muted">Repeat the password</small>  
     </div>
     <div class="form-group ">
