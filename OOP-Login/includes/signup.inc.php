@@ -3,8 +3,6 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-var_dump($_POST); // 
-
 $username = $password = $passwordRepeat =$email = '';
 
 if($_SERVER['REQUEST_METHOD']=='POST'){
@@ -30,4 +28,3 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     header("Location: /Products-Crud-OOP/OOP-Login/index.php?error=none");
     exit(); // or die();
 }
-echo 'sthhhh';
