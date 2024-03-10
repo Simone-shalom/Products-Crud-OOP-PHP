@@ -6,7 +6,6 @@ ini_set('display_errors', 1);
 $username = $password = $passwordRepeat =$email = '';
 
 if($_SERVER['REQUEST_METHOD']=='POST'){
-// if (isset($_POST['submit'])){
     // take data from post method
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);

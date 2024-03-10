@@ -28,7 +28,7 @@
     </div>
     <div class="form-group">
         <label for="passwordRepeat">Repeat Password</label>
-        <input type="text" class="form-control" id="passwordRepeat" name="passwordRepeat"  >
+        <input type="password" class="form-control" id="passwordRepeat" name="passwordRepeat"  >
         <small id="username" class="form-text text-muted">Repeat the password</small>  
     </div>
     <div class="form-group ">
@@ -37,18 +37,20 @@
     </div>
     <button  class="btn btn-primary">Signup</button>
 </div>
+</form>
 
+<form>
 <div>
     <h3>Login</h3>
     <div class="form-group">
-        <label for="usernameLogin">Username</label>
-        <input type="text" class="form-control" id="usernameLogin" name="usernameLogin" placeholder="Enter username">
-        <small id="usernameLogin" class="form-text text-muted"> Set your username</small>
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
+        <small id="username" class="form-text text-muted"> Set your username</small>
     </div>
     <div class="form-group">
-        <label for="passwordLogin">Password</label>
-        <input type="password" class="form-control" id="passwordLogin"   name="passwordLogin">
-        <small id="passwordLogin" class="form-text text-muted">Provide password</small>  
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password"   name="password">
+        <small id="password" class="form-text text-muted">Provide password</small>  
     </div>
     <button type="submit" class="btn btn-primary">login</button>
 </div>

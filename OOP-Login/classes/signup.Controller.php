@@ -88,8 +88,8 @@ public function signUpUser(){
  
     private function isValidPassword(){
         $result = false;
-        if((!preg_match("/^[a-zA-Z0-9]*$/", $this->username)) || strlen($this->password < 8)){
-            $result = false;
+       if (strlen($this->password) < 8 || !preg_match("/[a-z]/", $this->password) || !preg_match("/[A-Z]/", $this->password) || !preg_match("/\d/", $this->password)) {
+        $result = false;    
         }else {
             $result = true;
         }
