@@ -35,20 +35,20 @@
         <label for="email">Email</label>
         <input type="email" class="form-control" id="email" name="email" placeholder="your email">
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button  class="btn btn-primary">Signup</button>
 </div>
 
 <div>
     <h3>Login</h3>
     <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
-        <small id="username" class="form-text text-muted"> Set your username</small>
+        <label for="usernameLogin">Username</label>
+        <input type="text" class="form-control" id="usernameLogin" name="usernameLogin" placeholder="Enter username">
+        <small id="usernameLogin" class="form-text text-muted"> Set your username</small>
     </div>
     <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" id="password"   name="password">
-        <small id="username" class="form-text text-muted">Provide password</small>  
+        <label for="passwordLogin">Password</label>
+        <input type="password" class="form-control" id="passwordLogin"   name="passwordLogin">
+        <small id="passwordLogin" class="form-text text-muted">Provide password</small>  
     </div>
     <button type="submit" class="btn btn-primary">login</button>
 </div>

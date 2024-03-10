@@ -13,44 +13,46 @@ class SignupController extends Signup {
         $this->email = $email;
     }
 
-    public function signUpUser(){
-        if($this->isEmpty() === false){
-            // Empty inputs
-            header ("Location:" . $_SERVER['DOCUMENT_ROOT'] . '/index/php?error=emptyinput');
-            exit();
-        }
-
-         if($this->isValidUsername() === false){
-            // Invalid username
-            header ("Location:" . $_SERVER['DOCUMENT_ROOT'] . '/index/php?error=username');
-            exit();
-        }
-
-         if($this->isValidEmail() === false){
-            // Invalid email
-            header ("Location:" . $_SERVER['DOCUMENT_ROOT'] . '/index/php?error=email');
-            exit();
-        }
-
-         if($this->isValidPassword() === false){
-            // Invalid password
-            header ("Location:" . $_SERVER['DOCUMENT_ROOT'] . '/index/php?error=password');
-            exit();
-        }
-
-           if($this->isPasswordMatch() === false){
-            // Passwords do not match
-            header ("Location:" . $_SERVER['DOCUMENT_ROOT'] . '/index/php?error=passwordMatch');
-            exit();
-        }
-           if($this->isUserTaken() === false){
-            // User already exists
-            header ("Location:" . $_SERVER['DOCUMENT_ROOT'] . '/index/php?error=userTaken');
-            exit();
-        }
-
-        // if empty with errors create User
+public function signUpUser(){
+    if($this->isEmpty() === false){
+        // Empty inputs
+        header("Location: /Products-Crud-OOP/OOP-Login/index.php?error=emptyinput");
+        exit();
     }
+
+    if($this->isValidUsername() === false){
+        // Invalid username
+        header("Location: /Products-Crud-OOP/OOP-Login/index.php?error=username");
+        exit();
+    }
+
+    if($this->isValidEmail() === false){
+        // Invalid email
+        header("Location: /Products-Crud-OOP/OOP-Login/index.php?error=email");
+        exit();
+    }
+
+    if($this->isValidPassword() === false){
+        // Invalid password
+        header("Location: /Products-Crud-OOP/OOP-Login/index.php?error=password");
+        exit();
+    }
+
+    if($this->isPasswordMatch() === false){
+        // Passwords do not match
+        header("Location: /Products-Crud-OOP/OOP-Login/index.php?error=passwordMatch");
+        exit();
+    }
+    
+    if($this->isUserTaken() === false){
+        // User already exists
+        header("Location: /Products-Crud-OOP/OOP-Login/index.php?error=userTaken");
+        exit();
+    }
+
+    // If no errors, sign up the user
+    $this->setUser($this->username, $this->email, $this->password);
+}
 
     private function isEmpty(){
         $result=false;
@@ -107,7 +109,7 @@ class SignupController extends Signup {
 
     private function isUserTaken(){
         $result = false;
-        if($this->userExists($this->username, $this->email)){
+        if(!$this->userExists($this->username, $this->email)){
             $result = false;
         } else {
             $result = true;

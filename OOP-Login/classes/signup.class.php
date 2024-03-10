@@ -11,7 +11,7 @@ class Signup extends Database {
         // bind values
         $statement -> bindValue(':username', $username);
         $statement -> bindValue(':email', $email);
-        $statement -> bindValue(':password', $hashedPassword);
+        $statement -> bindValue(':password', $password);
         // execute an statement
         $statement -> execute();
     }
