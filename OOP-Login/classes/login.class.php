@@ -1,6 +1,6 @@
 <?php
 
-class LoginClass extends Database{
+class Login extends Database{
  
     protected function getUser( string $username, string $password ){
         // select the password
@@ -20,14 +20,15 @@ class LoginClass extends Database{
               // if password is same, select the user 
             $statement = $this->connect()->prepare("SELECT * FROM users WHERE username=:username, password=:password");
             $statement->bindValue("username", $username, PDO::PARAM_STR );
-            $statement->bindValue("password", $password, PDO::PARAM_STR );
+            $statement->bindValue("password", $passwordHashed[0]['password'], PDO::PARAM_STR );
             $statement->execute();
 
-            
+            // take user and assign session global with user data
+            $user = $statement->fetch(PDO::FETCH_ASSOC);
+            session_start();
+            $_SESSION["id"] = $user[0]["id"];
+            $_SESSION["username"] = $user[0]["username"];
 
         }
-
-
     }
-    
 }

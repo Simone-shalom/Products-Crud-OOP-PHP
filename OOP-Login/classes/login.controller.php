@@ -1,6 +1,6 @@
 <?php
 
-class LoginController {
+class LoginController extends Login {
     private string $username; 
     private string $password; 
 
@@ -16,8 +16,7 @@ class LoginController {
         exit();
     }
         // getUser if no errors
-    
-
+        $this->getUser($this->username, $this->password);
     }
 
      private function isEmpty(){
