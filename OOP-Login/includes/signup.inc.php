@@ -12,6 +12,11 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
     echo $email . $password . $passwordRepeat .'';
 
     // Instantiate SignUp Controller class
+    include "../classes/signup.Controller.php";
+    include "../classes/signup.class.php";
+
+    $signup = new SignupController($username, $password, $passwordRepeat, $email); 
+
 
     // Error handling
 
