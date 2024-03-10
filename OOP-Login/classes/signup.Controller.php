@@ -13,4 +13,57 @@ class SignupController {
         $this->email = $email;
     }
 
+    private function isEmpty(){
+        $result=false;
+        if(empty($this->username) || empty($this->password) 
+            || empty(($this->passwordRepeat)) || empty($this->email)) {
+            $result = false;
+        }else {
+            $result = true;
+        }
+        return $result;
+    }
+
+    private function isValidUsername(){
+        $result = false;
+        if(!preg_match("/^[a-zA-Z0-9]*$/", $this->username)){
+            $result = false;
+        }else {
+            $result = true;
+        }
+        return $result;
+    }
+
+    private function isValidEmail(){
+        $result = false;
+        if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)){
+            $result = false;
+        }else {
+            $result = true;
+        }
+        return $result;
+    }
+
+ 
+    private function isValidPassword(){
+        $result = false;
+        if((!preg_match("/^[a-zA-Z0-9]*$/", $this->username)) || strlen($this->password < 8)){
+            $result = false;
+        }else {
+            $result = true;
+        }
+        return $result;
+    }
+
+    private function isPasswordMatch(){
+        $result = false;
+        if($this->password !== $this->passwordRepeat){
+            $result = false;
+        }else {
+            $result = true;
+        }
+        return $result;
+
+    }
+
 }
