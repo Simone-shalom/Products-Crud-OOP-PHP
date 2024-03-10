@@ -1,6 +1,8 @@
 <?php
+session_start();
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,6 +14,19 @@
     <link rel="stylesheet" href="app.css">
 </head>
 <body>
+
+<?php 
+if(isset($_SESSION['username'])){
+    ?>
+    <div>
+        <h1>
+            HElloo <?php echo $_SESSION['username']; ?>
+        </h1>
+    </div>
+    <?php
+}
+?>
+
  <form action="includes/signup.inc.php" method="post">
 
 <div class="signUp">
@@ -39,7 +54,7 @@
 </div>
 </form>
 
-<form>
+<form action="includes/login.inc.php" method="post">
 <div>
     <h3>Login</h3>
     <div class="form-group">
