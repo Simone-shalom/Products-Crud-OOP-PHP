@@ -22,6 +22,7 @@ if(isset($_SESSION['username'])){
         <h1>
             HElloo <?php echo $_SESSION['username']; ?>
         </h1>
+        <a href="includes/logout.php">Logout</a>
     </div>
     <?php
 }

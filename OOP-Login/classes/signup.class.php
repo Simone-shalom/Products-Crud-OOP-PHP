@@ -5,7 +5,7 @@ class Signup extends Database {
     protected function setUser( string $username, string $email, string $password){
         // create a statement
         $statement = $this->connect()->prepare("INSERT INTO users(username, password, email)
-            VALUES (:username, :email, :password)");
+            VALUES (:username,:password, :email)");
          // hash the password
         $hashedPassword = password_hash( $password, PASSWORD_DEFAULT );
         // bind values

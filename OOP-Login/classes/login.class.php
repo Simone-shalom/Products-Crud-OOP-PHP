@@ -5,30 +5,30 @@ class Login extends Database{
     protected function getUser( string $username, string $password ){
         // select the password
         $statement= $this->connect()->prepare("SELECT password FROM users WHERE username=:username");
-        $statement->bindValue("username", $username, PDO::PARAM_STR );
+        $statement->bindValue("username", $username);
         $statement->execute();
 
         // check if passwords are same 
         $passwordHashed = $statement->fetch(PDO::FETCH_ASSOC);
-        $checkPassword = password_verify($password, $passwordHashed[0]['password']); 
-        
-        if( $checkPassword === false ){
-            $statement = null;
-            header("Location: /Products-Crud-OOP/OOP-Login/index.php?error=wrongPassword");
-            exit();
-        }elseif($checkPassword === true){
-              // if password is same, select the user 
-            $statement = $this->connect()->prepare("SELECT * FROM users WHERE username=:username, password=:password");
-            $statement->bindValue("username", $username, PDO::PARAM_STR );
-            $statement->bindValue("password", $passwordHashed[0]['password'], PDO::PARAM_STR );
+       // Check if the provided password matches the hashed password
+        if ($passwordHashed && password_verify($password, $passwordHashed['password'])) {
+            // Password is correct
+            // Retrieve the user based on the username only
+            $statement = $this->connect()->prepare("SELECT * FROM users WHERE username = :username");
+            $statement->bindValue(":username", $username);
             $statement->execute();
 
-            // take user and assign session global with user data
+            // Fetch the user data
             $user = $statement->fetch(PDO::FETCH_ASSOC);
-            session_start();
-            $_SESSION["id"] = $user[0]["id"];
-            $_SESSION["username"] = $user[0]["username"];
 
+            // Start session and store user data
+            session_start();
+            $_SESSION["id"] = $user["id"];
+            $_SESSION["username"] = $user["username"];
+        } else {
+            // Password is incorrect
+            header("Location: /Products-Crud-OOP/OOP-Login/index.php?error=wrongPassword");
+            exit();
         }
     }
 }
