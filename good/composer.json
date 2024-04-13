@@ -2,7 +2,7 @@
   "name": "simon/good",
   "autoload": {
     "psr-4": {
-      "Simon\\Good\\": "./"
+      "app\\": "./"
     }
   },
   "authors": [
